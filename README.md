@@ -17,8 +17,16 @@
   2. gitignore 등록
 
 ## go module 생성
+  ```
+    go mod init github.com/rebornist/hanbit_v1.0
+  ```
 
-  1. 명령어
-    ```
-      go mod init github.com/rebornist/hanbit_v1.0
-    ```
+## go echo 설치
+  ```
+    go get github.com/labstack/echo/v4
+  ```
+
+## logrus 설치
+  ```
+    go get github.com/sirupsen/logrus
+  ```
