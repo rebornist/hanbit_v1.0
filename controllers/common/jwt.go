@@ -1,41 +1,18 @@
-package mixins
+package common
 
 import (
 	"crypto/rsa"
-	"encoding/base32"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"time"
 
-	"github.com/rebornist/hanbit_v1.0/configs"
-	"github.com/rebornist/hanbit_v1.0/models"
-
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo/v4"
+	"github.com/rebornist/hanbit_v1.0/configs"
+	"github.com/rebornist/hanbit_v1.0/models"
 	"gorm.io/gorm"
 )
-
-func Signing(s string) (string, error) {
-	byteStr, err := configs.EncryptionAESKey(s)
-	if err != nil {
-		return "", err
-	}
-	signedtext := base32.StdEncoding.EncodeToString(byteStr)
-	return signedtext, nil
-}
-
-func Unsigning(s string) (string, error) {
-	unsignedByte, err := base32.StdEncoding.DecodeString(s)
-	if err != nil {
-		return "", err
-	}
-	byteStr, err := configs.DecryptionAESKey(string(unsignedByte))
-	if err != nil {
-		return "", err
-	}
-	return string(byteStr), nil
-}
 
 func CreateAccessJWT(email string) (*models.JWTToken, *models.JWTUserInfo, error) {
 
@@ -178,7 +155,8 @@ func CheckRefreshToken(c echo.Context, db *gorm.DB) (*models.JWTUserInfo, error)
 		delSession := DeleteCookie("SID", "/")
 		c.SetCookie(delSession)
 
-		return nil, errors.New("세션 만료 기간이 지났습니다.")
+		message := "The session expiration period has passed."
+		return nil, fmt.Errorf("%s", message)
 	}
 
 	// refresh 토큰 정보 가져오기
@@ -352,6 +330,7 @@ func createID(db *gorm.DB, val string) (bool, error) {
 		return true, nil
 	}
 
-	return false, errors.New("해당 아이디가 존재합니다.")
+	message := "해당 아이디가 존재합니다."
+	return false, fmt.Errorf("%s", message)
 
 }

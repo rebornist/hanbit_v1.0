@@ -5,7 +5,7 @@ import (
 	"io"
 
 	"github.com/rebornist/hanbit_v1.0/configs"
-	"github.com/rebornist/hanbit_v1.0/mixins"
+	"github.com/rebornist/hanbit_v1.0/middlewares"
 
 	"github.com/rebornist/hanbit_v1.0/controllers/api/home"
 
@@ -41,8 +41,8 @@ func main() {
 	e.Use(middleware.RequestID())
 	e.Use(middleware.Recover())
 	e.Use(middleware.Secure())
-	e.Use(mixins.DbContext(db))
-	e.Use(mixins.LogrusLogger())
+	e.Use(middlewares.DbContext(db))
+	e.Use(middlewares.LogrusLogger())
 
 	home.HomeRouter(e)
 
