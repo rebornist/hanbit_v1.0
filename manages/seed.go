@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/rebornist/hanbit_v1.0/configs"
-	"github.com/rebornist/hanbit_v1.0/mixins"
+	"github.com/rebornist/hanbit_v1.0/controllers/common"
 )
 
 func Seed(number, table string) error {
@@ -68,7 +68,7 @@ func SeedPost(table string) error {
 	}
 
 	for i := 0; i < len(posts); i++ {
-		id := mixins.CreateRandomString(16)
+		id := common.CreateRandomString(16)
 		if err := db.Table(table).Create(map[string]interface{}{
 			"id":         id,
 			"number":     uint(i + 1),

@@ -1,10 +1,15 @@
 package manages
 
+import (
+	"github.com/rebornist/hanbit_v1.0/configs"
+	"github.com/rebornist/hanbit_v1.0/models"
+)
+
 func Migrate() error {
 	// db connect
-	// db := configs.ConnectDb()
+	db := configs.ConnectDb()
 
-	// user := new(users.User)
+	user := new(models.User)
 	// logger := new(mixins.Logger)
 	// board := new(boards.Board)
 	// gallary := new(gallaries.Gallary)
@@ -13,10 +18,10 @@ func Migrate() error {
 	// post := new(configs.Post)
 	// broadcast := new(sermonbroadcasts.Broadcast)
 
-	// // Migrate the schema
-	// if err := db.AutoMigrate(&user); err != nil {
-	// 	return err
-	// }
+	// Migrate the schema
+	if err := db.AutoMigrate(&user); err != nil {
+		return err
+	}
 
 	// if err := db.AutoMigrate(&sermon); err != nil {
 	// 	return err

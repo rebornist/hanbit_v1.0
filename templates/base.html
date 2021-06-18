@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zxx">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock title %} | 한빛교회</title>
+    <meta
+      name="description"
+      content="The Project a Bootstrap-based, Responsive HTML5 Template"
+    />
+    <meta name="author" content="author" />
+
+    <!-- Mobile Meta -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/favicon.ico" />
+
+    <!-- Web Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700|Muli:200,300,400|Nanum+Gothic:400,700|Noto+Sans+KR:100,300,400&display=swap"
+    />
+    
+    <!-- The Project's core CSS file -->
+    <!-- Use css/rtl_style.css for RTL version -->
+    <link href="/static/index.css" rel="stylesheet" >
+    
+    <script
+      type="text/javascript"
+      src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=oz27o9oz3t"
+    ></script>
+  
+  </head>
+  <!-- body classes:  -->
+  <!-- "boxed": boxed layout mode e.g. <body class="boxed"> -->
+  <!-- "pattern-1 ... pattern-9": background patterns for boxed layout mode e.g. <body class="boxed pattern-1"> -->
+  <!-- "transparent-header": makes the header transparent and pulls the banner to top -->
+  <!-- "gradient-background-header": applies gradient background to header -->
+  <!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
+  <body class="front-page">
+    <!-- page wrapper start -->
+    <!-- ================ -->
+    <div class="page-wrapper">
+      <!-- header-container start -->
+      <div class="header-container">
+        {% include "./partials/nav.html" %}
+
+        <div class="alert message hidden"></div>
+
+        {% block content %}{% endblock %}
+        
+        {% include "./partials/footer.html" %}
+      </div>
+    </div>
+
+    <!-- JavaScript files placed at the end of the document so the pages load faster -->
+    <!-- ================================================== -->
+    <!-- Jquery and Bootstap core js files -->
+    <script type="application/json" src="/static/index.js"></script>
+
+    <script type="text/javascript">
+      const mapOptions = {
+        center: new naver.maps.LatLng(36.671494, 126.688341),
+        zoom: 15,
+      };
+
+      const map = new naver.maps.Map("map", mapOptions);
+
+      const marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(36.671494, 126.688341),
+        map: map,
+      });
+    </script>
+
+    
+  </body>
+</html>

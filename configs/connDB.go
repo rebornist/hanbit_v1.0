@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/rebornist/hanbit_v1.0/models"
+	"github.com/rebornist/hanbit_v1.0/controllers/customType"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -13,7 +13,7 @@ import (
 func ConnectDb() *gorm.DB {
 
 	// 웹 서비스 정보 중 데이터베이스 정보 추출
-	var DB models.Database
+	var DB customType.Database
 	getInfo, err := GetServiceInfo("database")
 	if err != nil {
 		fmt.Println(err)

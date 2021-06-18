@@ -1,0 +1,199 @@
+<!-- header-container start -->
+<div class="header-container">
+  <!-- header-top start -->
+  <!-- classes:  -->
+  <!-- "dark": dark version of header top e.g. class="header-top dark" -->
+  <!-- "colored": colored version of header top e.g. class="header-top colored" -->
+  <!-- ================ -->
+  <div class="header-top colored">
+    <div class="container">
+      <div class="row">
+        <div class="col-3 col-sm-6 col-lg-9">
+          <!-- header-top-first start -->
+          <!-- ================ -->
+          <div class="header-top-first clearfix">
+            <ul class="list-inline hidden-md-down">
+              <li class="list-inline-item">
+                <i class="fa fa-map-marker pr-1 pl-2"></i> 충남 예산군 삽교읍
+                수촌학재길 141
+              </li>
+              <li class="list-inline-item">
+                <i class="fa fa-phone pr-1 pl-2"></i> 041-337-4971
+              </li>
+              <li class="list-inline-item">
+                <i class="fa fa-envelope-o pr-1 pl-2"></i> gebba@hanmail.net
+              </li>
+            </ul>
+          </div>
+          <!-- header-top-first end -->
+        </div>
+        <div class="col-9 col-sm-6 col-lg-3">
+          <!-- header-top-second start -->
+          <!-- ================ -->
+          <div id="header-top-second" class="clearfix">
+            <!-- header top dropdowns start -->
+            <!-- ================ -->
+            <div class="header-top-dropdown text-right">
+              <div class="btn-group">
+                {% if user.is_active %}
+                <a
+                  href="/signout"
+                  type="button"
+                  class="btn btn-default btn-sm"
+                  ><i class="fa fa-unlock pr-2"></i> Logout</a
+                >
+                {% else %}
+                <a
+                  href="/siginin"
+                  type="button"
+                  class="btn btn-default btn-sm"
+                  ><i class="fa fa-lock pr-2"></i> Login</a
+                >
+                {% endif %}
+              </div>
+            </div>
+            <!--  header top dropdowns end -->
+          </div>
+          <!-- header-top-second end -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- header-top end -->
+
+  <!-- header start -->
+  <!-- classes:  -->
+  <!-- "fixed": enables fixed navigation mode (sticky menu) e.g. class="header fixed clearfix" -->
+  <!-- "fixed-desktop": enables fixed navigation only for desktop devices e.g. class="header fixed fixed-desktop clearfix" -->
+  <!-- "fixed-all": enables fixed navigation only for all devices desktop and mobile e.g. class="header fixed fixed-desktop clearfix" -->
+  <!-- "dark": dark version of header e.g. class="header dark clearfix" -->
+  <!-- "centered": mandatory class for the centered logo layout -->
+  <!-- ================ -->
+  <header class="header fixed fixed-desktop clearfix text-noto">
+    <div class="container header-navbar">
+      <div class="row">
+        <div class="col-md-auto hidden-md-down pl-3">
+          <!-- header-first start -->
+          <!-- ================ -->
+          <div class="header-first clearfix">
+            <!-- logo -->
+            <div id="logo" class="logo">
+              <a href="/"
+                ><img
+                  id="logo_img"
+                  src="/static/images/logo.png"
+                  alt="The Light Comminuty Church"
+              /></a>
+            </div>
+          </div>
+          <!-- header-first end -->
+        </div>
+        <div class="col-lg-8 ml-lg-auto">
+          <!-- header-second start -->
+          <!-- ================ -->
+          <div class="header-second clearfix">
+            <!-- main-navigation start -->
+            <!-- classes: -->
+            <!-- "onclick": Makes the dropdowns open on click, this the default bootstrap behavior e.g. class="main-navigation onclick" -->
+            <!-- "animated": Enables animations on dropdowns opening e.g. class="main-navigation animated" -->
+            <!-- ================ -->
+            <div class="main-navigation animated">
+              <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <div class="navbar-brand clearfix hidden-lg-up">
+                  <!-- logo -->
+                  <div id="logo-mobile" class="logo">
+                    <a href="/"
+                      ><img
+                        id="logo-img-mobile"
+                        src="../assets/images/logo.png"
+                        alt="The Project"
+                    /></a>
+                  </div>
+                </div>
+
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbar-collapse-1"
+                  aria-controls="navbar-collapse-1"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                  <!-- main-menu -->
+                  <ul class="navbar-nav ml-xl-auto">
+                    <li class="nav-item">
+                      <a
+                        href="/intro"
+                        class="nav-link"
+                        ria-haspopup="true"
+                        aria-expanded="false"
+                        >교회소개</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        href="/awake"
+                        class="nav-link"
+                        ria-haspopup="true"
+                        aria-expanded="false"
+                        >교육·훈련</a
+                      >
+                    </li>
+                    <!-- <li class="nav-item">
+                      <a
+                        href="#"
+                        class="nav-link"
+                        ria-haspopup="true"
+                        aria-expanded="false"
+                        >선교·봉사</a
+                      >
+                    </li> -->
+                    <li class="nav-item">
+                      <a
+                        style="display: flex; flex-wrap: nowrap"
+                        href="/sermons"
+                        class="nav-link"
+                        ria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        설교·묵상
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        href="/boards"
+                        class="nav-link"
+                        ria-haspopup="true"
+                        aria-expanded="false"
+                        >교회소식</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        href="/gallaries"
+                        class="nav-link"
+                        ria-haspopup="true"
+                        aria-expanded="false"
+                        >갤러리</a
+                      >
+                    </li>
+                  </ul>
+                  <!-- main-menu end -->
+                </div>
+              </nav>
+            </div>
+            <!-- main-navigation end -->
+          </div>
+          <!-- header-second end -->
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- header end -->
+</div>
+<!-- header-container end -->

@@ -30,3 +30,8 @@
   ```
     go get github.com/sirupsen/logrus
   ```
+
+## Pongo2 설치
+  ```
+    go get -u github.com/flosch/pongo2/v4
+  ```
