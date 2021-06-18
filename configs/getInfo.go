@@ -8,7 +8,7 @@ import (
 )
 
 // 웹 서비스 정보 받아오기
-func getWebserviceInfo() map[string]interface{} {
+func getServiceInfoInit() map[string]interface{} {
 	var info map[string]interface{}
 	pwd, err := os.Getwd()
 	if err != nil {
@@ -28,7 +28,7 @@ func getWebserviceInfo() map[string]interface{} {
 
 func GetServiceInfo(name string) ([]byte, error) {
 	// 웹 서비스 정보 중 데이터베이스 정보 추출
-	getInfo, err := json.Marshal(getWebserviceInfo()[name])
+	getInfo, err := json.Marshal(getServiceInfoInit()[name])
 	if err != nil {
 		fmt.Println(err)
 	}

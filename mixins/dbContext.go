@@ -22,7 +22,7 @@ func DbContext(db *gorm.DB) echo.MiddlewareFunc {
 			))
 
 			switch req.Method {
-			case "POST", "PUT", "DELETE":
+			case "GET", "POST", "PUT", "DELETE":
 				if err := session.Begin().Error; err != nil {
 					return echo.NewHTTPError(500, err.Error())
 				}
