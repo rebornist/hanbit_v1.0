@@ -1,4 +1,4 @@
-package customType
+package customTypes
 
 // LetsEncrypt 접속 정보
 type Encrypt struct {

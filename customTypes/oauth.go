@@ -1,4 +1,4 @@
-package customType
+package customTypes
 
 // OAuth Token 정보
 type OAuthToken struct {

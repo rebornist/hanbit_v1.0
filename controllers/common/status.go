@@ -3,14 +3,14 @@ package common
 import (
 	"fmt"
 
-	"github.com/rebornist/hanbit_v1.0/controllers/customType"
+	"github.com/rebornist/hanbit_v1.0/customTypes"
 	"github.com/rebornist/hanbit_v1.0/models"
 
 	"github.com/labstack/echo/v4"
 	"gorm.io/gorm"
 )
 
-func CheckStatus(c echo.Context, db *gorm.DB) (*customType.JWTUserInfo, error) {
+func CheckStatus(c echo.Context, db *gorm.DB) (*customTypes.JWTUserInfo, error) {
 
 	session, err := c.Cookie("SID")
 	if err != nil {
@@ -72,7 +72,7 @@ func CheckStatus(c echo.Context, db *gorm.DB) (*customType.JWTUserInfo, error) {
 
 	claimsInfo := data["user"].(map[string]interface{})
 
-	userInfo := &customType.JWTUserInfo{
+	userInfo := &customTypes.JWTUserInfo{
 		UID:   claimsInfo["uid"].(string),
 		Email: claimsInfo["email"].(string),
 		Grade: claimsInfo["grade"].(float64),

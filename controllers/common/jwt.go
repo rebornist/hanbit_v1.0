@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/rebornist/hanbit_v1.0/configs"
-	"github.com/rebornist/hanbit_v1.0/controllers/customType"
+	"github.com/rebornist/hanbit_v1.0/customTypes"
 	"github.com/rebornist/hanbit_v1.0/models"
 
 	"github.com/dgrijalva/jwt-go"
@@ -16,7 +16,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func CreateAccessJWT(email string) (*customType.JWTToken, *customType.JWTUserInfo, error) {
+func CreateAccessJWT(email string) (*customTypes.JWTToken, *customTypes.JWTUserInfo, error) {
 
 	jt, userInfo, err := initJWT(email)
 	if err != nil {
@@ -24,7 +24,7 @@ func CreateAccessJWT(email string) (*customType.JWTToken, *customType.JWTUserInf
 	}
 
 	// rsa 파일 위치 불러오기
-	var jwtKey customType.JWTKey
+	var jwtKey customTypes.JWTKey
 	pathByte, err := configs.GetServiceInfo("jwt_token")
 	if err != nil {
 		return nil, nil, err
@@ -56,7 +56,7 @@ func CreateAccessJWT(email string) (*customType.JWTToken, *customType.JWTUserInf
 	return jt, userInfo, nil
 }
 
-func CreateRefreshJWT(email string) (*customType.JWTToken, *customType.JWTUserInfo, error) {
+func CreateRefreshJWT(email string) (*customTypes.JWTToken, *customTypes.JWTUserInfo, error) {
 
 	jt, userInfo, err := initJWT(email)
 	if err != nil {
@@ -64,7 +64,7 @@ func CreateRefreshJWT(email string) (*customType.JWTToken, *customType.JWTUserIn
 	}
 
 	// rsa 파일 위치 불러오기
-	var jwtKey customType.JWTKey
+	var jwtKey customTypes.JWTKey
 	pathByte, err := configs.GetServiceInfo("jwt_token")
 	if err != nil {
 		return nil, nil, err
@@ -97,7 +97,7 @@ func CreateRefreshJWT(email string) (*customType.JWTToken, *customType.JWTUserIn
 func VerifyJWT(Type, Value string) (*jwt.Token, error) {
 
 	// rsa 파일 위치 불러오기
-	var jwtKey customType.JWTKey
+	var jwtKey customTypes.JWTKey
 	var pathByte, _ = configs.GetServiceInfo("jwt_token")
 	json.Unmarshal(pathByte, &jwtKey)
 
@@ -135,7 +135,7 @@ func VerifyJWT(Type, Value string) (*jwt.Token, error) {
 	return token, nil
 }
 
-func CheckRefreshToken(c echo.Context, db *gorm.DB) (*customType.JWTUserInfo, error) {
+func CheckRefreshToken(c echo.Context, db *gorm.DB) (*customTypes.JWTUserInfo, error) {
 	session, err := c.Cookie("SID")
 	if err != nil {
 		return nil, err
@@ -199,10 +199,10 @@ func GetClaimsInfo(Type, Value string) (map[string]interface{}, error) {
 	return data, nil
 }
 
-func initJWT(email string) (*customType.JWTToken, *customType.JWTUserInfo, error) {
+func initJWT(email string) (*customTypes.JWTToken, *customTypes.JWTUserInfo, error) {
 	// 유저정보 추출
 	var db = configs.ConnectDb()
-	userInfo := &customType.JWTUserInfo{}
+	userInfo := &customTypes.JWTUserInfo{}
 
 	if err := db.Table("users").Select("uid, email, grade").Where("email = ?", email).Scan(userInfo).Error; err != nil {
 		return nil, nil, err
@@ -211,7 +211,7 @@ func initJWT(email string) (*customType.JWTToken, *customType.JWTUserInfo, error
 	uid, _ = Signing(uid)
 
 	// 토큰 생성
-	jt := &customType.JWTToken{}
+	jt := &customTypes.JWTToken{}
 
 	now := time.Now() // Go Playground 에서는 항상 시각은 2009-11-10 23:00:00 +0000 UTC 에서 시작한다.
 
@@ -229,7 +229,7 @@ func initJWT(email string) (*customType.JWTToken, *customType.JWTUserInfo, error
 	}
 	if val != "" {
 		jt.RefreshId = val
-		userInfo = &customType.JWTUserInfo{
+		userInfo = &customTypes.JWTUserInfo{
 			UID:   uid,
 			Email: *&userInfo.Email,
 			Grade: *&userInfo.Grade,

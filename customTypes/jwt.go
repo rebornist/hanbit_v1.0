@@ -1,4 +1,4 @@
-package customType
+package customTypes
 
 type JWTKey struct {
 	AccessPrivateKey  string `json:"access_private_key"`

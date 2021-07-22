@@ -1,4 +1,4 @@
-package customType
+package customTypes
 
 // 공통 Responst type
 type Response struct {

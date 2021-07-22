@@ -1,4 +1,4 @@
-package customType
+package customTypes
 
 // DB 접속 정보
 type Database struct {
