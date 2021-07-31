@@ -20,3 +20,6 @@ vendor/
 *.xlsx
 *.tsv
 *.csv
+
+# log 경로 업로드 제어
+log/

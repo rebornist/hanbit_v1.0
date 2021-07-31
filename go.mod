@@ -3,7 +3,7 @@ module github.com/rebornist/hanbit_v1.0
 go 1.16
 
 require (
-	github.com/GeertJohan/go.rice v1.0.2
+	github.com/GeertJohan/go.rice v1.0.2 // indirect
 	github.com/daaku/go.zipexe v1.0.1 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/flosch/pongo2 v0.0.0-20200913210552-0d938eb266f3
